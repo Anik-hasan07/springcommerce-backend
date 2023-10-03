@@ -41,14 +41,7 @@ exports.createUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
-  const user = req.user;
-  res
-    .cookie('jwt', user.token, {
-      expires: new Date(Date.now() + 3600000),
-      httpOnly: true,
-    })
-    .status(201)
-    .json({ id: user.id, role: user.role });
+  res.json(req.user)
 };
 
 exports.logout = async (req, res) => {
